@@ -2,6 +2,7 @@
 import MovieCards from "@/Components/MovieCards";
 import { getOneMovie } from "@/Service/fetchData";
 import { AllMovieProps } from "@/Utils/types";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const page = ({ params }: { params: { id: number } }) => {
@@ -30,6 +31,11 @@ const page = ({ params }: { params: { id: number } }) => {
 				</section>
 				<section className="w-2/3 p-10 h-screen max-h-fit flex flex-col justify-evenly">
 					{" "}
+					<Link href={`/`}>
+						<button className="p-4 rounded-lg bg-white text-black hover:bg-slate-400 hover:text-white">
+							Go Back
+						</button>
+					</Link>
 					<h2 className="text-white text-4xl text-center">
 						{details?.title}
 					</h2>
@@ -60,5 +66,4 @@ const page = ({ params }: { params: { id: number } }) => {
 		</main>
 	);
 };
-
 export default page;
