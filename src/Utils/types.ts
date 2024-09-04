@@ -4,9 +4,9 @@ export type AllMovieProps = {
 	release_date: string;
 	box_office: string;
 	duration: number;
-	overview: null | string;
+	overview: string;
 	cover_url: string;
-	trailer_url: null | string;
+	trailer_url: string;
 	directed_by: string;
 	phase: number;
 	saga: Saga;
@@ -14,20 +14,20 @@ export type AllMovieProps = {
 	post_credit_scenes: number;
 	imdb_id: string;
 	updated_at: Date;
-	related_movies?: AllMovieProps[];
+	related_movies: AllMovieProps[];
 };
 
 export type AllShowsProps = {
 	id: number;
 	title: string;
 	release_date: Date;
-	last_aired_date: Date | null;
+	last_aired_date: Date;
 	season: number;
 	number_episodes: number;
-	overview: null | string;
+	overview: string;
 	cover_url: string;
-	trailer_url: null | string;
-	directed_by: null | string;
+	trailer_url: string;
+	directed_by: string;
 	phase: number;
 	saga: Saga;
 	imdb_id: string;

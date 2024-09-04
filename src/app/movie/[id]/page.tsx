@@ -20,38 +20,45 @@ const page = ({ params }: { params: { id: number } }) => {
 	}, []);
 
 	return (
-		<main className="min-h-screen w-full flex flex-col gap-24 bg-slate-800">
-			<div className="flex w-full min-hscreen">
-				<section className="w-1/3 h-full">
+		<main className="min-h-screen max-h-fit w-full flex flex-col mb-40 gap-24 bg-black">
+			<section className="flex w-full h-[90vh]">
+				<figure className="w-1/3 h-full">
 					<img
 						src={details?.cover_url}
-						className="object-cover"
-						alt=""
+						className="object-cover h-full"
+						alt={details?.title}
 					/>
-				</section>
-				<section className="w-2/3 p-10 h-screen max-h-fit flex flex-col justify-evenly">
-					{" "}
-					<Link href={`/`}>
-						<button className="p-4 rounded-lg bg-white text-black hover:bg-slate-400 hover:text-white">
-							Go Back
-						</button>
-					</Link>
-					<h2 className="text-white text-4xl text-center">
+				</figure>
+				<div className="w-2/3 p-10 h-full flex flex-col items-center justify-evenly">
+					<h2 className="text-white text-6xl text-center font-bold font-serif">
 						{details?.title}
 					</h2>
-					<p className="text-justify p-4">{details?.overview}</p>
+
+					<p className="text-justify p-4 w-2/3">
+						{details?.overview}
+					</p>
 					<h2 className="text-white text-xl text-center">
 						Directed by {details?.directed_by}
 					</h2>
+					<a
+						href={details?.trailer_url}
+						className="text-blue-400 hover:underline hover:text-blue-200 text-xl font-bold"
+						target="_blank"
+					>
+						Watch the trailer
+					</a>
 					<div className="flex gap-10 justify-evenly items-center">
 						<h3>Duration : {details?.duration} minutes</h3>
-						<h3 className="text-green-500">
-							${details?.box_office} at the box office.
+						<h3 className="text-green-500 flex gap-2">
+							${details?.box_office}
+							<span className="text-white">
+								at the box office.
+							</span>
 						</h3>
 						<h3>Released on {details?.release_date}</h3>
 					</div>
-				</section>
-			</div>
+				</div>
+			</section>
 			<section className="min-h-screen w-full">
 				<h2 className="text-center text-4xl text-white">
 					See related movies :
