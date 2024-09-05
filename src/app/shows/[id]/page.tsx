@@ -1,15 +1,15 @@
 "use client";
 import MovieCards from "@/Components/MovieCards";
-import { getOneMovie } from "@/Service/fetchData";
-import { AllMovieProps } from "@/Utils/types";
+import { getOneMovie, getOneShow } from "@/Service/fetchData";
+import { AllMovieProps, AllShowsProps } from "@/Utils/types";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const page = ({ params }: { params: { id: number } }) => {
-	const [details, setDetails] = useState<AllMovieProps>();
+	const [details, setDetails] = useState<AllShowsProps>();
 
 	useEffect(() => {
-		getOneMovie(params.id)
+		getOneShow(params.id)
 			.then((res) => {
 				setDetails(res);
 				console.log(res);
@@ -20,7 +20,7 @@ const page = ({ params }: { params: { id: number } }) => {
 	}, []);
 
 	return (
-		<main className="min-h-screen max-h-fit w-full flex flex-col mb-40 gap-24 bg-black">
+		<div className="min-h-screen max-h-fit w-full flex flex-col mb-40 gap-24 bg-black">
 			<section className="flex w-full h-[90vh]">
 				<figure className="w-1/3 h-full">
 					<img
@@ -48,29 +48,15 @@ const page = ({ params }: { params: { id: number } }) => {
 						Watch the trailer
 					</a>
 					<div className="flex gap-10 justify-evenly items-center">
-						<h3>Duration : {details?.duration} minutes</h3>
-						<h3 className="text-green-500 flex gap-2">
-							${details?.box_office}
-							<span className="text-white">
-								at the box office.
-							</span>
+						<h3 className="flex gap-2">
+							{details?.season} season(s)
 						</h3>
-						<h3>Released on {details?.release_date}</h3>
+						<h3>{details?.number_episodes} episodes</h3>
+						
 					</div>
 				</div>
 			</section>
-			<section className="h-fit w-full">
-				<h2 className="text-center text-4xl text-white">
-					See related movies :
-				</h2>
-				<div className="w-full flex flex-wrap justify-center items-center gap-10">
-					{details?.related_movies &&
-						details.related_movies.map((movie) => {
-							return <MovieCards movie={movie} />;
-						})}
-				</div>
-			</section>
-		</main>
+		</div>
 	);
 };
 export default page;

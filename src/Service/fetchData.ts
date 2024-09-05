@@ -44,3 +44,18 @@ export async function getAllShows() {
 			throw new Error(e);
 		});
 }
+
+export async function getOneShow(id: number) {
+	let url = `https://mcuapi.herokuapp.com/api/v1/tvshows/${id}`;
+
+	return axios
+		.get(url)
+		.then((res) => {
+			console.log(res);
+			return res.data;
+		})
+		.catch((e) => {
+			console.log(e);
+			throw new Error(e);
+		});
+}
