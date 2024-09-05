@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function getAllMovies() {
-	let url = `https://mcuapi.herokuapp.com/api/v1/movies`;
+	let url = `${process.env.NEXT_PUBLIC_API}/movies`;
 
 	return axios
 		.get(url)
@@ -16,7 +16,7 @@ export async function getAllMovies() {
 }
 
 export async function getOneMovie(id: number) {
-	let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
+	let url = `${process.env.NEXT_PUBLIC_API}/movies/${id}`;
 
 	return axios
 		.get(url)
@@ -31,7 +31,7 @@ export async function getOneMovie(id: number) {
 }
 
 export async function getAllShows() {
-	let url = `https://mcuapi.herokuapp.com/api/v1/tvshows`;
+	let url = `${process.env.NEXT_PUBLIC_API}/tvshows`;
 
 	return axios
 		.get(url)
@@ -46,7 +46,7 @@ export async function getAllShows() {
 }
 
 export async function getOneShow(id: number) {
-	let url = `https://mcuapi.herokuapp.com/api/v1/tvshows/${id}`;
+	let url = `${process.env.NEXT_PUBLIC_API}/tvshows/${id}`;
 
 	return axios
 		.get(url)
